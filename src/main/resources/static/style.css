@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  position: relative;
+  width: 60vw;
+  height: 60vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#newGameBtn {
+  display: none;
+}
+
+body {
+  font-family: "Inter";
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+  background-color: #f5f5dc;
+}
+
+#countryForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+#userFeedbackdiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#userFeedbackdiv > * {
+  text-align: center;
+  padding: 0px;
+  margin: 4px;
+}
+
+#container {
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#submitBtn {
+  border: 1px solid black;
+  border-radius: 3px;
+  min-height: 40px;
+  background-color: gainsboro;
+}
+
+#submitBtn:hover {
+  background-color: rgb(179, 177, 177);
+  transform: scale(1.05);
+  transition: transform 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+#searchBox {
+  margin-right: 5px;
+  min-height: 35px;
+  max-width: 500px;
+  min-width: 400px;
+
+  width: auto;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  #submitBtn {
+    font-size: 1.25rem;
+  }
+  #searchBox {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  #submitBtn {
+    font-size: 1rem;
+  }
+  #searchBox {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  #bookGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #searchBox {
+    width: auto;
+    max-width: 60%;
+    min-width: 0px;
+  }
+  #submitBtn {
+    border: 1px solid black;
+    border-radius: 3px;
+    min-height: 30px;
+    background-color: gainsboro;
+    padding: 4px 8px;
+    font-size: 0.85rem;
+  }
+  #bookForm {
+    flex-direction: column;
+  }
+  #bookForm {
+    flex-direction: column;
+  }
+  .navbar div {
+    padding-left: 15px;
+  }
+}
