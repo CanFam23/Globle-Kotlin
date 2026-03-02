@@ -26,11 +26,12 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-webmvc")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("tools.jackson.module:jackson-module-kotlin")
-
+	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.springframework.boot:spring-boot-starter-json")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("net.sf.geographiclib:GeographicLib-Java:2.0")
+
 	implementation("org.locationtech.jts:jts-core:1.19.0")
 	implementation("org.locationtech.jts.io:jts-io-common:1.19.0")
 
