@@ -118,7 +118,7 @@ class GlobleGameService(
             "geometry" to geometryToGeoJsonMap(countryData.second),
             "properties" to mapOf(
                 "correct" to (guess == currentTarget),
-                "distance" to targetDistances[guess],
+                "distance" to targetDistances[cleanGuess],
                 "center" to geometryToGeoJsonMap(center),
                 "country" to countryData.first,
             )
@@ -137,15 +137,13 @@ class GlobleGameService(
      * @return The distance between the two geometries in miles (truncated).
      */
     private fun distanceMiles(a: Geometry, b: Geometry): Int {
-        if (a.intersects(b)) return 0
-
         // Nearest points on each geometry to each other
         val pts = DistanceOp.nearestPoints(a, b)
         val p1 = pts[0]
         val p2 = pts[1]
 
         // Calculates the distance
-        val inv = Geodesic.WGS84.Inverse(p1.x, p1.y, p2.x, p2.y)
+        val inv = Geodesic.WGS84.Inverse(p1.y, p1.x, p2.y, p2.x)
         val meters = inv.s12 // Distance in meters
 
         return (meters * M_TO_MILES).toInt()
@@ -162,7 +160,6 @@ class GlobleGameService(
     private fun geometryToGeoJsonMap(geometry: Geometry): Map<String, Any?> {
         val objectMapper = jacksonObjectMapper()
         val geoJsonString = GeoJsonWriter().write(geometry) // valid for GeometryCollection too
-        println(objectMapper.readValue(geoJsonString, Map::class.java))
         @Suppress("UNCHECKED_CAST")
         return objectMapper.readValue(geoJsonString, Map::class.java) as Map<String, Any?>
     }
