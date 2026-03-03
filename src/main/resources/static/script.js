@@ -1,3 +1,11 @@
+/**
+ * Globle game client logic:
+ * - Tracks guesses + best score (sessionStorage)
+ * - Initializes and configures Mapbox map/layers
+ * - Handles new game + country search suggestions
+ * - Submits guesses to backend, updates map + UI, and records guess history
+ */
+
 /** Stores current number of guesses. */
 let numGuesses = 0;
 
