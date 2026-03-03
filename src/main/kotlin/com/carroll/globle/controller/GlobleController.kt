@@ -57,7 +57,7 @@ class GlobleController (
      * }
      * ```
      */
-    @GetMapping("/newGame")
+    @PostMapping("/newGame")
     fun newGame(): Map<String, Boolean> {
         globalService.generateTargetCountry()
 
