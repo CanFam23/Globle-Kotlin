@@ -21,7 +21,8 @@ let emptyCollection = {
  * @returns Map instance created
  */
 async function initMap() {
-  mapboxgl.accessToken = await fetchAPIkey();
+  // This is a public key, its will be exposed on the frontend
+  mapboxgl.accessToken = 'your key here';
 
   const map = new mapboxgl.Map({
     container: "map",
@@ -125,30 +126,6 @@ let map;
 initMap().then((m) => {
   map = m;
 });
-
-/**
- * Fetch mapbox API key, definetly not the most secure but gets
- * the job done.
- * @returns API key
- */
-async function fetchAPIkey() {
-  try {
-    const response = await fetch("/getAPIkey", { method: "GET" });
-
-    if (!response.ok) {
-      setMessage("Failed to fetch API key...");
-    }
-
-    const data = await response.json(); // parse JSON
-
-    return data.key;
-  } catch (error) {
-    setMessage(
-      "Something went wrong, maybe try turning it off and back on again?",
-    );
-    console.error("Error fetching API key:", error);
-  }
-}
 
 // Add functionality to button that prompts user for new game
 document.addEventListener("DOMContentLoaded", function () {
@@ -322,7 +299,7 @@ function clearSearchBox() {
  */
 function correct(data) {
   map.flyTo({
-    center: data.properties.center,
+    center: data.properties.center.coordinates,
     zoom: 2,
     speed: 0.8,
     curve: 1,
@@ -344,7 +321,7 @@ function correct(data) {
  */
 function incorrect(data) {
   map.flyTo({
-    center: data.properties.center,
+    center: data.properties.center.coordinates,
     zoom: 1.5,
     speed: 0.8,
     curve: 1,
