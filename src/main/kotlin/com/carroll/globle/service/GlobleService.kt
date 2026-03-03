@@ -46,8 +46,6 @@ class GlobleGameService(
             .toList().shuffled().toMutableList()
 
         generateTargetCountry()
-
-        println("Current target is $currentTarget") // TODO REMOVE
     }
 
     /**
